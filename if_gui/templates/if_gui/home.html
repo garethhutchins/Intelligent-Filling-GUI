@@ -1,0 +1,39 @@
+{% extends "if_gui/layout.html" %}
+{% block title %}
+Home
+{% endblock %}
+{% block content %}
+<h1>Gareth's Intelligent Filing and Similar Documents</h1>
+<p>Select A File to Analyse</p>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="myfile" id="myfile">
+    <p><button type="submit" id="file_upload" name="file_upload">Submit</button></p>
+</form>
+{% if results %}
+    <p><b>Predicted Document : {{ predicted }}</b></p>
+    
+    <table>
+        <th id="Header">
+            <tr><td><strong>Recomended Documents</strong></td></tr>
+            <tr>
+                {% for c in column_names %}
+                    <td>{{ c }}</td>
+                {% endfor %}
+            </tr>
+        </th>
+        <tbody>
+            {% for td in table_data %}
+            <tr>
+                {% for key, value in td.items %}
+                    <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+{% if error %}
+<p><b>Core Capture Services Couldn't Process the Document</b></p>
+{% endif %}
+{% endblock
