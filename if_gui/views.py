@@ -36,13 +36,13 @@ def auth():
     loginRequest = {}
     loginRequest['grant_type'] = 'client_credentials'
     loginRequest['username'] = 'ghutchin@opentext.com'
-    loginRequest['password'] = 'Opentext123456!'
+    loginRequest['password'] = ''
     loginRequest['sitename'] = 'OTPreSales2_0'
     loginRequest['subscriptionName'] = 'ghutchin'
 
     # Take the client secret from the developer console and convert it to base 64
-    client = '25b9ba98-c8fc-4373-8256-dc72e55a4fa0'
-    secret = 'f9b619e66df0492aa7d8a78afe51a799'
+    client = ''
+    secret = ''
     clientSecret = client + ':' + secret
     csEncoded = base64.b64encode(clientSecret.encode())
 
